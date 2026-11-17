@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="skills" class="bg-editorial-black text-editorial-white py-32 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="mb-16">
+            <span class="font-mono text-xs tracking-widest text-cyan-400 block mb-4">04 // TECH STACK</span>
+            <h2 class="font-heading text-5xl md:text-7xl uppercase tracking-tight">Keahlian & Tools</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% set categories = {} %}
+            {% for skill in skills %}
+                {% if skill.category not in categories %}
+                    {% set _ = categories.update({skill.category: []}) %}
+                {% endif %}
+                {% set _ = categories[skill.category].append(skill) %}
+            {% endfor %}
+
+            {% for category, cat_skills in categories.items() %}
+                <div class="{% if loop.index == 1 or loop.index == 4 %}col-span-1 md:col-span-2{% endif %} border border-gray-800 p-8 hover:border-cyan-400 transition-colors duration-300 group hover-target">
+                    <h3 class="font-mono text-xs text-gray-500 tracking-widest mb-6 group-hover:text-cyan-400 transition-colors">{{ category }}</h3>
+                    <div class="flex flex-wrap gap-3">
+                        {% for skill in cat_skills %}
+                            <span class="border border-gray-700 px-4 py-2 font-mono text-sm hover:bg-white hover:text-black transition-colors cursor-default">{{ skill.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

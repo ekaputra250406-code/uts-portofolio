@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="experience" class="bg-editorial-white py-32 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-16">
+            <span class="font-mono text-xs tracking-widest text-gray-500 block mb-4">02 // EXPERIENCE</span>
+            <h2 class="font-heading text-5xl md:text-7xl uppercase tracking-tight">Pengalaman</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+            <!-- ID Card Lanyard -->
+            <div class="sticky top-32 flex justify-center mt-10">
+                <div class="lanyard-card w-72 bg-gray-100 border border-editorial-gray p-4 rounded-xl shadow-2xl relative">
+                    <div class="absolute -top-12 left-1/2 w-4 h-16 bg-black -translate-x-1/2 z-[-1]"></div>
+                    <div class="bg-black w-full h-8 rounded-t-lg mb-4 flex justify-center items-center">
+                        <div class="w-12 h-1 bg-gray-600 rounded-full"></div>
+                    </div>
+                    <img src="/static/img/foto-profil.png" alt="Foto" class="w-full h-64 object-cover grayscale bg-gray-300 mb-4">
+                    <div class="border-t border-gray-300 pt-4 text-center">
+                        <h3 class="font-heading text-xl tracking-wider uppercase">Hidayat Eka S.</h3>
+                        <p class="font-mono text-xs text-gray-500 mt-1">MAHASISWA TEKNOLOGI INFORMASI</p>
+                        <div class="mt-4 flex justify-center gap-1 h-8 opacity-50">
+                            <div class="w-1 bg-black h-full"></div>
+                            <div class="w-2 bg-black h-full"></div>
+                            <div class="w-1 bg-black h-full"></div>
+                            <div class="w-3 bg-black h-full"></div>
+                            <div class="w-1 bg-black h-full"></div>
+                            <div class="w-2 bg-black h-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="flex flex-col gap-6">
+                <details class="group border-b border-editorial-gray pb-6 cursor-pointer" open>
+                    <summary class="font-heading text-2xl uppercase tracking-wide flex justify-between items-center list-none hover-target">
+                        Asisten Praktikum Pemrograman Web
+                        <span class="text-gray-400 group-open:rotate-45 transition-transform text-3xl">+</span>
+                    </summary>
+                    <div class="mt-4 font-body text-gray-600">
+                        <p class="mb-3 font-mono text-sm text-editorial-black">2025 - SEKARANG</p>
+                        <p>Membantu mahasiswa dalam memahami dasar-dasar HTML, CSS, JavaScript, dan Python (Flask).</p>
+                    </div>
+                </details>
+                
+                <details class="group border-b border-editorial-gray pb-6 cursor-pointer">
+                    <summary class="font-heading text-2xl uppercase tracking-wide flex justify-between items-center list-none hover-target">
+                        Freelance Web Developer
+                        <span class="text-gray-400 group-open:rotate-45 transition-transform text-3xl">+</span>
+                    </summary>
+                    <div class="mt-4 font-body text-gray-600">
+                        <p class="mb-3 font-mono text-sm text-editorial-black">2024 - 2025</p>
+                        <p>Mengembangkan aplikasi *web-based* untuk UMKM lokal menggunakan Tailwind CSS.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

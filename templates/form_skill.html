@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Skill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'editorial-black': '#0A0A0A' }, fontFamily: { 'body': ['Inter', 'sans-serif'], 'mono': ['Space Mono', 'monospace'] } } } }
+    </script>
+</head>
+<body class="bg-gray-100 font-body h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-8 border border-gray-200 shadow-xl w-full max-w-md">
+        <h1 class="font-mono text-2xl font-bold mb-6">{{ action }} SKILL</h1>
+        
+        <form method="POST" class="flex flex-col gap-4">
+            <div>
+                <label class="block font-mono text-xs font-bold mb-1">NAMA SKILL</label>
+                <input type="text" name="name" value="{{ skill.name if skill else '' }}" required class="w-full border p-2 focus:border-black outline-none">
+            </div>
+            <div>
+                <label class="block font-mono text-xs font-bold mb-1">KATEGORI</label>
+                <!-- Pilihan Kategori -->
+                <select name="category" class="w-full border p-2 focus:border-black outline-none bg-white">
+                    <option value="FRONTEND" {% if skill and skill.category == 'FRONTEND' %}selected{% endif %}>FRONTEND</option>
+                    <option value="BACKEND" {% if skill and skill.category == 'BACKEND' %}selected{% endif %}>BACKEND</option>
+                    <option value="DATABASE" {% if skill and skill.category == 'DATABASE' %}selected{% endif %}>DATABASE</option>
+                    <option value="TOOLS" {% if skill and skill.category == 'TOOLS' %}selected{% endif %}>TOOLS</option>
+                </select>
+            </div>
+            <div>
+                <label class="block font-mono text-xs font-bold mb-1">PROFICIENCY (%)</label>
+                <input type="number" name="proficiency" value="{{ skill.proficiency if skill else '50' }}" min="0" max="100" required class="w-full border p-2 focus:border-black outline-none">
+            </div>
+            
+            <div class="flex gap-4 mt-4">
+                <button type="submit" class="bg-editorial-black text-white px-6 py-3 font-mono font-bold hover:bg-gray-800">SIMPAN DATA</button>
+                <a href="/admin" class="bg-gray-200 px-6 py-3 font-mono font-bold hover:bg-gray-300 text-center">BATAL</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

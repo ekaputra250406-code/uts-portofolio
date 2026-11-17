@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { 'editorial-black': '#0A0A0A' }, fontFamily: { 'body': ['Inter', 'sans-serif'], 'mono': ['Space Mono', 'monospace'] } } } }
+    </script>
+</head>
+<body class="bg-gray-100 font-body p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header Admin -->
+        <div class="flex justify-between items-center mb-8 bg-white p-6 border border-gray-200 shadow-sm">
+            <div>
+                <h1 class="font-mono text-2xl font-bold">ADMIN DASHBOARD</h1>
+                <p class="text-sm text-gray-500">Kelola data Portofolio Hidayat</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="/" target="_blank" class="bg-gray-200 px-4 py-2 text-sm font-mono hover:bg-gray-300">LIHAT WEB</a>
+                <a href="/logout" class="bg-red-500 text-white px-4 py-2 text-sm font-mono hover:bg-red-600">LOGOUT</a>
+            </div>
+        </div>
+
+        <!-- Notifikasi Flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="p-3 mb-4 text-sm border {% if category == 'success' %}bg-green-100 text-green-700 border-green-400{% else %}bg-red-100 text-red-700 border-red-400{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- TABEL PROJECTS -->
+        <div class="bg-white border border-gray-200 p-6 mb-8 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-mono text-xl font-bold">Daftar Projects</h2>
+                <a href="/admin/project/add" class="bg-editorial-black text-white px-4 py-2 text-sm font-mono hover:bg-gray-800">+ TAMBAH PROJECT</a>
+            </div>
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b-2 border-gray-200 font-mono text-sm">
+                        <th class="p-3">Judul</th>
+                        <th class="p-3">Role</th>
+                        <th class="p-3">Tahun</th>
+                        <th class="p-3 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                        <td class="p-3 font-semibold">{{ project.title }}</td>
+                        <td class="p-3">{{ project.role }}</td>
+                        <td class="p-3">{{ project.year }}</td>
+                        <td class="p-3 text-center flex justify-center gap-2">
+                            <a href="/admin/project/edit/{{ project.id }}" class="bg-yellow-400 px-3 py-1 text-xs font-bold hover:bg-yellow-500">EDIT</a>
+                            <a href="/admin/project/delete/{{ project.id }}" onclick="return confirm('Yakin hapus proyek ini?')" class="bg-red-500 text-white px-3 py-1 text-xs font-bold hover:bg-red-600">HAPUS</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABEL SKILLS -->
+        <div class="bg-white border border-gray-200 p-6 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-mono text-xl font-bold">Daftar Skills</h2>
+                <a href="/admin/skill/add" class="bg-editorial-black text-white px-4 py-2 text-sm font-mono hover:bg-gray-800">+ TAMBAH SKILL</a>
+            </div>
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b-2 border-gray-200 font-mono text-sm">
+                        <th class="p-3">Nama Skill</th>
+                        <th class="p-3">Kategori</th>
+                        <th class="p-3 text-center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for skill in skills %}
+                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                        <td class="p-3 font-semibold">{{ skill.name }}</td>
+                        <td class="p-3">{{ skill.category }}</td>
+                        <td class="p-3 text-center flex justify-center gap-2">
+                            <a href="/admin/skill/edit/{{ skill.id }}" class="bg-yellow-400 px-3 py-1 text-xs font-bold hover:bg-yellow-500">EDIT</a>
+                            <a href="/admin/skill/delete/{{ skill.id }}" onclick="return confirm('Yakin hapus skill ini?')" class="bg-red-500 text-white px-3 py-1 text-xs font-bold hover:bg-red-600">HAPUS</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

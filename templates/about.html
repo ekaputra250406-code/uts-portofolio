@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="about" class="relative py-32 px-6 md:px-12 max-w-7xl mx-auto mt-12 bg-editorial-white">
+    <div class="flex flex-col gap-12">
+        <div>
+            <span class="font-mono text-xs tracking-widest text-gray-500 block mb-4">01 // ABOUT ME</span>
+            <h2 class="font-heading text-5xl md:text-7xl uppercase tracking-tight flex items-center">
+                <span id="typing-text"></span>
+                <span class="animate-pulse ml-2 text-gray-400">|</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-4">
+            <div class="font-body text-lg md:text-xl text-gray-800 leading-relaxed text-justify">
+                <p class="mb-6">Halo, saya <strong class="text-editorial-black">Hidayat Eka Saputra</strong>, seorang mahasiswa Teknologi Informasi yang berfokus pada pengembangan <em>Fullstack Web Development</em>. Bagi saya, menulis kode bukan sekadar menyelesaikan tugas, melainkan seni memecahkan masalah dengan solusi yang efisien dan rapi.</p>
+                <p>Berbekal pengalaman praktikum dan eksplorasi mandiri, saya terbiasa membangun aplikasi dari nol mulai dari merancang arsitektur *backend* (Python/Flask) hingga menyusun antarmuka *frontend* yang responsif (Tailwind CSS).</p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div class="border-l-2 border-editorial-black pl-4">
+                    <h4 class="font-mono text-sm font-bold tracking-widest mb-2">FOKUS SAAT INI</h4>
+                    <p class="font-body text-gray-600">Mendalami arsitektur microservices, pengembangan RESTful API dengan Flask, dan optimasi performa antarmuka web.</p>
+                </div>
+                <div class="border-l-2 border-editorial-black pl-4">
+                    <h4 class="font-mono text-sm font-bold tracking-widest mb-2">PENDIDIKAN</h4>
+                    <p class="font-body text-gray-600">S1 Teknologi Informasi<br><span class="text-sm">Aktif membangun portofolio & bereksperimen dengan *open-source*.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
